@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Politique de confidentialité — <span></span></title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="config.js"></script>
+<script>
+  (function () {
+    var c = (window.SITE && window.SITE.theme) || {};
+    var m = {primary:'--primary',primaryDark:'--primary-dark',primaryLight:'--primary-light',dark:'--dark',dark2:'--dark-2',grayLight:'--gray-light'};
+    for (var k in m) if (c[k]) document.documentElement.style.setProperty(m[k], c[k]);
+  })();
+</script>
+</head>
+<body class="legal-page">
+
+<header class="legal-header">
+  <a class="legal-back" href="index.html">&larr; <span data-brand-name></span></a>
+</header>
+
+<main class="legal">
+  <h1>Politique de confidentialité</h1>
+  <p class="legal-updated">Dernière mise à jour : <span data-updated></span></p>
+
+  <h2>Données collectées</h2>
+  <p>Ce site ne collecte aucune donnée à votre insu. Les seules informations recueillies sont
+     celles que vous transmettez volontairement :</p>
+  <ul>
+    <li>les <strong>dates et informations de séjour</strong> saisies dans le formulaire de
+        réservation, uniquement pour composer le message que vous choisissez d'envoyer ;</li>
+    <li>votre <strong>adresse email</strong> si vous vous inscrivez à la newsletter ;</li>
+    <li>votre <strong>nom et votre message</strong> si vous utilisez le formulaire de contact.</li>
+  </ul>
+
+  <h2>Finalité</h2>
+  <p>Ces données servent exclusivement à répondre à votre demande et, le cas échéant, à vous
+     transmettre nos offres. Elles ne sont ni vendues, ni cédées, ni transmises à des tiers
+     à des fins commerciales.</p>
+
+  <h2>Envoi via WhatsApp</h2>
+  <p>Lorsque vous choisissez d'envoyer votre demande par WhatsApp, le message est composé sur
+     votre appareil puis transmis via l'application WhatsApp, soumise à sa propre politique de
+     confidentialité.</p>
+
+  <h2>Conservation</h2>
+  <p>Les demandes de réservation sont conservées [durée, ex. 12 mois]. Les adresses email de la
+     newsletter le sont jusqu'à votre désinscription.</p>
+
+  <h2>Cookies</h2>
+  <p>Ce site n'utilise aucun cookie publicitaire ni traceur tiers. Seul le stockage local de
+     votre navigateur est utilisé pour mémoriser votre langue et vos chambres favorites ;
+     ces informations ne quittent jamais votre appareil.</p>
+
+  <h2>Vos droits</h2>
+  <p>Vous pouvez demander l'accès, la rectification ou la suppression de vos données en écrivant
+     à <a class="email-link" data-mail></a>.</p>
+
+  <p class="legal-todo">
+    <strong>À compléter avant la mise en ligne.</strong> Les passages entre crochets doivent
+    être remplis avec les informations réelles du client (RCCM, siège social, hébergeur…).
+  </p>
+</main>
+
+<footer class="legal-footer">
+  <p>© <span data-year></span> <span data-brand-legal></span></p>
+  <p>
+    <a href="mentions-legales.html">Mentions légales</a> ·
+    <a href="confidentialite.html">Confidentialité</a> ·
+    <a href="cgv.html">CGV</a>
+  </p>
+</footer>
+
+<script>
+(function () {
+  var C = window.SITE || {}, b = C.brand || {}, ct = C.contact || {}, a = ct.address || {};
+  var addr = [a.street, a.zone, a.city, a.country].filter(Boolean).join(', ');
+  function set(sel, fn) {
+    Array.prototype.forEach.call(document.querySelectorAll(sel), fn);
+  }
+  set('[data-brand-name]',  function (e) { e.textContent = b.name || ''; });
+  set('[data-brand-legal]', function (e) { e.textContent = b.legalName || b.name || ''; });
+  set('[data-address]',     function (e) { e.textContent = addr; });
+  set('[data-year]',        function (e) { e.textContent = new Date().getFullYear(); });
+  set('[data-updated]',     function (e) { e.textContent = new Date().toLocaleDateString('fr-FR'); });
+  set('[data-mail]',        function (e) { e.href = 'mailto:' + (ct.email || ''); e.textContent = ct.email || ''; });
+  set('[data-tel]',         function (e) { e.href = 'tel:' + (ct.phone || ''); e.textContent = ct.phoneDisplay || ''; });
+  document.title = document.title.replace('<span></span>', b.name || '');
+})();
+</script>
+</body>
+</html>

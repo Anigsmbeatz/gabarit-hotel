@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" data-i18n-attr="content:meta.description" content="Hôtel de charme à Abidjan : chambres élégantes, spa, restaurant et service attentionné.">
+  <meta name="theme-color" content="#b8894a">
+
+  <title data-i18n="meta.title">Le Prestige — Hôtel &amp; Spa à Abidjan</title>
+
+  <!-- Open Graph / partage WhatsApp & Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Le Prestige — Hôtel &amp; Spa">
+  <meta property="og:description" content="Une parenthèse de calme au cœur de la ville.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/favicon.svg">
+
+  <!-- Polices : le site reste lisible même si Google Fonts est injoignable.
+       Pour un fonctionnement 100 % hors-ligne, voir LISEZMOI.md (§ polices). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="preload" as="image" href="assets/img/hero-1.webp">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="config.js"></script>
+  <script>
+    /* Applique les couleurs de config.js et arme les animations avant le
+       premier rendu. Filet de sécurité : si le script principal ne démarre
+       pas, tout redevient visible au bout de 2 s. */
+    (function () {
+      var c = (window.SITE && window.SITE.theme) || {};
+      var map = { primary:'--primary', primaryDark:'--primary-dark', primaryLight:'--primary-light',
+                  dark:'--dark', dark2:'--dark-2', grayLight:'--gray-light' };
+      for (var k in map) { if (c[k]) document.documentElement.style.setProperty(map[k], c[k]); }
+      document.documentElement.classList.add('reveal-on');
+      setTimeout(function () {
+        if (!window.__revealReady) document.documentElement.classList.remove('reveal-on');
+      }, 2000);
+    })();
+  </script>
+
+  <!-- Données structurées : c'est ce qui fait apparaître l'hôtel avec sa
+       note, son prix et sa carte dans Google. Généré depuis config.js. -->
+  <script type="application/ld+json" id="jsonld">{}</script>
+</head>
+<body>
+
+<!-- ====================================================================
+     BIBLIOTHÈQUE D'ICÔNES (intégrée : fonctionne hors-ligne et en file://)
+     Usage : <svg class="ico"><use href="#i-wifi"></use></svg>
+     ==================================================================== -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <defs>
+    <g id="_s" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></g>
+  </defs>
+  <symbol id="i-hotel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16M2 21h20M9.5 21v-4h5v4M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M9.5 15.5l2 2 3.5-4"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 9.2a16 16 0 0 1 19 0M5.6 12.8a11 11 0 0 1 12.8 0M8.8 16.3a6 6 0 0 1 6.4 0"/><circle cx="12" cy="19.6" r="1.1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M3.6 7l16.8 10M20.4 7L3.6 17M12 6.5L9.3 4M12 6.5L14.7 4M12 17.5L9.3 20M12 17.5l2.7 2.5"/></symbol>
+  <symbol id="i-tv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M8 3l4 4 4-4"/></symbol>
+  <symbol id="i-bath" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12V6a2 2 0 0 1 3.5-1.3M2.5 12h19v3.5a4 4 0 0 1-4 4h-11a4 4 0 0 1-4-4V12zM6.5 19.5L5 22M17.5 19.5L19 22"/></symbol>
+  <symbol id="i-view" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l6-4v16M9 21V11l6-3v13M15 21V9l6 3v9M2 21h20M6 12h.01M6 16h.01M12 14h.01M18 16h.01"/></symbol>
+  <symbol id="i-jacuzzi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12.5h19V16a4 4 0 0 1-4 4h-11a4 4 0 0 1-4-4v-3.5zM8 9.5c0-1 1-1.2 1-2.2S8 6 8 5M12 9.5c0-1 1-1.2 1-2.2S12 6 12 5M16 9.5c0-1 1-1.2 1-2.2S16 6 16 5"/></symbol>
+  <symbol id="i-utensils" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v6a2.5 2.5 0 0 0 2.5 2.5h0A2.5 2.5 0 0 0 10 9V3M7.5 11.5V21M17.5 3c-1.7 1.3-2.6 3.2-2.6 5.6 0 1.7.9 2.6 2.1 2.6h.5V21"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 18.5h19M4.5 18.5a7.5 7.5 0 0 1 15 0M12 7V4.5M10 4.5h4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3l2.7 5.7 6.1.8-4.5 4.3 1.1 6.2-5.4-3-5.4 3 1.1-6.2L3.2 9.5l6.1-.8L12 3z"/></symbol>
+  <symbol id="i-star-half" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3v13l-5.4 3 1.1-6.2L3.2 9.5l6.1-.8L12 3z"/><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M12 3l2.7 5.7 6.1.8-4.5 4.3 1.1 6.2-5.4-3-5.4 3 1.1-6.2L3.2 9.5l6.1-.8L12 3z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.3S4.5 15.7 4.5 10.6A4.1 4.1 0 0 1 12 8.2a4.1 4.1 0 0 1 7.5 2.4c0 5.1-7.5 9.7-7.5 9.7z"/></symbol>
+  <symbol id="i-heart-full" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20.3S4.5 15.7 4.5 10.6A4.1 4.1 0 0 1 12 8.2a4.1 4.1 0 0 1 7.5 2.4c0 5.1-7.5 9.7-7.5 9.7z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20.5 20.5L16 16"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20.5 20.5L16 16M11 8v6M8 11h6"/></symbol>
+  <symbol id="i-login" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5M10 16.5l4.5-4.5L10 7.5M14.5 12H3"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5M16.5 16.5L21 12l-4.5-4.5M21 12H9"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 20.5v-2a4 4 0 0 0-4-4h-5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7.5" r="3.7"/><path d="M22 20.5v-2a4 4 0 0 0-3-3.9M16 4.1a4 4 0 0 1 0 7.6"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 19v-8a2 2 0 0 1 2-2h15a2 2 0 0 1 2 2v8M2.5 15h19M6.5 9V7a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1v2M2.5 19v2M21.5 19v2"/></symbol>
+  <symbol id="i-spa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 13.5c0-4.5 3.4-8.5 8.5-8.5 0 5.4-4.4 8.5-8.5 8.5zM12 13.5C12 9 8.6 5 3.5 5c0 5.4 4.4 8.5 8.5 8.5zM12 13.5V21M5.5 17.5c2.2-1.2 4.3-1.2 6.5 0 2.2-1.2 4.3-1.2 6.5 0"/></symbol>
+  <symbol id="i-pool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8q2.5-2.5 5 0t5 0t5 0t5 0M2 13q2.5-2.5 5 0t5 0t5 0t5 0M2 18q2.5-2.5 5 0t5 0t5 0t5 0"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12.5l1.8-5A2.5 2.5 0 0 1 7.2 5.8h9.6a2.5 2.5 0 0 1 2.4 1.7l1.8 5M3 12.5h18v5H3v-5zM6 17.5V20M18 17.5V20M6.8 15h.01M17.2 15h.01"/></symbol>
+  <symbol id="i-dumbbell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12h19M5 9v6M8 6.5v11M16 6.5v11M19 9v6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s7-6.3 7-11.4A7 7 0 1 0 5 10.1c0 5.1 7 11.4 7 11.4z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 3h3l2 5-2.4 1.5a12.5 12.5 0 0 0 5.7 5.7L16 12.8l5 2v3.1a2 2 0 0 1-2.2 2A17.2 17.2 0 0 1 4.1 5.2 2 2 0 0 1 6.2 3z"/></symbol>
+  <symbol id="i-mobile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2" width="11" height="20" rx="2.5"/><path d="M10.8 18.2h2.4"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3.5 7l8.5 5.8L20.5 7"/></symbol>
+  <symbol id="i-mail-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.2L12 4l9 6.2V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8.8zM3 10.2l9 6.2 9-6.2"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L3 10.4l7.1 3.5L13.6 21 21 3zM10.1 13.9L21 3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M7.8 12.4l2.8 2.8 5.6-6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10.5" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6 14.8h4"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a9.9 9.9 0 0 0-8.5 15.1L2 22.2l5.2-1.4A9.9 9.9 0 1 0 12 2zm0 1.9a8 8 0 1 1-4.1 14.9l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 0 1 12 3.9zm-3.4 4c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.7 2.8 4.3 3.8 2.1.8 2.6.7 3 .6.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4l-.6-.3-1.9-.9c-.3-.1-.5-.2-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4 0-.5.2-.7l.5-.6.3-.5v-.5l-.8-2c-.2-.5-.4-.4-.6-.5h-.6z"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.8h2.6l.4-3H13.5V8.3c0-.9.2-1.5 1.5-1.5h1.6V4.1c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.2H7.9v3h2.6V21h3z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3.5"/><path d="M7.6 10.2V17M7.6 7.3v.01M11.4 17v-3.8a2.3 2.3 0 0 1 4.6 0V17"/></symbol>
+  <symbol id="i-twitter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4.5 4.5l15 15M19.5 4.5l-15 15"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main" data-i18n="skip">Aller au contenu</a>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <a class="logo" href="#accueil">
+    <svg class="ico" aria-hidden="true"><use href="#i-hotel"></use></svg>
+    <span data-brand-name>Le Prestige</span>
+  </a>
+
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu" data-i18n-attr="aria-label:a11y.menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav id="nav-menu" aria-label="Navigation principale">
+    <ul>
+      <li><a href="#accueil"   data-i18n="nav.home">Accueil</a></li>
+      <li><a href="#chambres"  data-i18n="nav.rooms">Chambres</a></li>
+      <li><a href="#galerie"   data-i18n="nav.gallery">Galerie</a></li>
+      <li><a href="#services"  data-i18n="nav.services">Services</a></li>
+      <li><a href="#avis"      data-i18n="nav.reviews">Avis</a></li>
+      <li><a href="#contact"   data-i18n="nav.contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="lang-selector" id="langSelector" hidden>
+    <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+      <svg class="ico" aria-hidden="true"><use href="#i-globe"></use></svg>
+      <span id="currentLang">FR</span>
+      <svg class="ico ico-sm" aria-hidden="true"><use href="#i-chevron-down"></use></svg>
+    </button>
+    <ul class="lang-menu" id="langMenu"></ul>
+  </div>
+
+  <a href="#reservation" class="btn-primary nav-cta">
+    <svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>
+    <span data-i18n="nav.book">Réserver</span>
+  </a>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="accueil">
+  <div class="hero-slider">
+    <div class="hero-slide active" style="background-image:url('assets/img/hero-1.webp')"></div>
+    <div class="hero-slide" style="background-image:url('assets/img/hero-2.webp')"></div>
+    <div class="hero-slide" style="background-image:url('assets/img/hero-3.webp')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <p class="hero-subtitle" data-aos="fade-down" data-i18n="hero.eyebrow">Bienvenue à Abidjan</p>
+    <h1 data-aos="fade-up" data-i18n-html="hero.title">L'excellence à l'état <span>pur</span></h1>
+    <p class="hero-text" data-aos="fade-up" data-aos-delay="150" data-i18n="hero.text">
+      Une parenthèse de calme au cœur de la ville. Confort, élégance et service attentionné.
+    </p>
+    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
+      <a href="#reservation" class="btn-primary" data-i18n="hero.cta1">Réserver maintenant</a>
+      <a href="#chambres" class="btn-outline" data-i18n="hero.cta2">Découvrir</a>
+    </div>
+  </div>
+
+  <div class="hero-dots">
+    <button class="dot active" data-slide="0" aria-label="1"></button>
+    <button class="dot" data-slide="1" aria-label="2"></button>
+    <button class="dot" data-slide="2" aria-label="3"></button>
+  </div>
+
+  <a href="#reservation" class="scroll-down" aria-hidden="true" tabindex="-1">
+    <svg class="ico" aria-hidden="true"><use href="#i-chevron-down"></use></svg>
+  </a>
+</section>
+
+<!-- ============ RÉSERVATION ============ -->
+<section class="reservation" id="reservation">
+  <div class="container">
+    <h2 data-aos="fade-up" data-i18n="book.title">Réservez votre séjour</h2>
+    <p class="subtitle" data-aos="fade-up" data-i18n="book.subtitle">Réponse en moins d'une heure · Annulation gratuite</p>
+
+    <form class="booking-form" id="bookingForm" data-aos="fade-up" data-aos-delay="150" novalidate>
+      <div class="field">
+        <label for="checkin"><svg class="ico" aria-hidden="true"><use href="#i-login"></use></svg> <span data-i18n="book.in">Arrivée</span></label>
+        <input type="date" id="checkin" required>
+      </div>
+      <div class="field">
+        <label for="checkout"><svg class="ico" aria-hidden="true"><use href="#i-logout"></use></svg> <span data-i18n="book.out">Départ</span></label>
+        <input type="date" id="checkout" required>
+      </div>
+      <div class="field">
+        <label for="guests"><svg class="ico" aria-hidden="true"><use href="#i-users"></use></svg> <span data-i18n="book.guests">Personnes</span></label>
+        <select id="guests">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="roomtype"><svg class="ico" aria-hidden="true"><use href="#i-bed"></use></svg> <span data-i18n="book.type">Type de chambre</span></label>
+        <select id="roomtype">
+          <option value="" data-i18n="book.any">Toutes</option>
+          <option value="room1" data-i18n="room1.name">Chambre Classique</option>
+          <option value="room2" data-i18n="room2.name">Suite Deluxe</option>
+          <option value="room3" data-i18n="room3.name">Suite Présidentielle</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-primary">
+        <svg class="ico" aria-hidden="true"><use href="#i-search"></use></svg>
+        <span data-i18n="book.submit">Demander une disponibilité</span>
+      </button>
+    </form>
+
+    <p class="booking-error" id="bookingError" role="alert"></p>
+
+    <!-- Récapitulatif généré au clic : c'est la partie qui rend la démo vivante -->
+    <div class="booking-result" id="bookingResult" hidden>
+      <h3><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg> <span data-i18n="book.recap">Votre demande</span></h3>
+      <p class="booking-recap" id="bookingRecap"></p>
+      <div class="booking-actions">
+        <a class="btn-primary btn-wa" id="bookWa" href="#" target="_blank" rel="noopener">
+          <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+          <span data-i18n="book.send_wa">Envoyer sur WhatsApp</span>
+        </a>
+        <a class="btn-ghost" id="bookMail" href="#">
+          <svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>
+          <span data-i18n="book.send_mail">Envoyer par email</span>
+        </a>
+      </div>
+      <p class="booking-note"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-shield"></use></svg> <span data-i18n="book.note">Aucun paiement en ligne : votre demande part directement à la réception.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAMBRES ============ -->
+<section class="rooms" id="chambres">
+  <div class="container">
+    <h2 data-aos="fade-up" data-i18n="rooms.title">Nos Chambres</h2>
+    <p class="subtitle" data-aos="fade-up" data-i18n="rooms.subtitle">Choisissez l'espace qui vous ressemble</p>
+
+    <div class="room-filters" data-aos="fade-up" role="tablist">
+      <button class="filter active" data-filter="all" data-i18n="rooms.f_all">Toutes</button>
+      <button class="filter" data-filter="room1" data-i18n="rooms.f_1">Classique</button>
+      <button class="filter" data-filter="room2" data-i18n="rooms.f_2">Deluxe</button>
+      <button class="filter" data-filter="room3" data-i18n="rooms.f_3">Présidentielle</button>
+    </div>
+
+    <div class="room-grid">
+
+      <article class="room-card" data-category="room1" data-room="room1" data-aos="fade-up">
+        <div class="room-image">
+          <img src="assets/img/chambre-1.webp" width="800" height="600" alt="Chambre Classique" loading="lazy">
+          <span class="badge" data-i18n="room1.badge">Populaire</span>
+          <button class="favorite" aria-label="Favori" data-fav="room1">
+            <svg class="ico" aria-hidden="true"><use href="#i-heart"></use></svg>
+          </button>
+        </div>
+        <div class="room-info">
+          <div class="room-rating" aria-label="4.7 / 5">
+            <svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star-half"></use></svg>
+            <span>4.7 (128 <span data-i18n="rooms.reviews">avis</span>)</span>
+          </div>
+          <h3 data-i18n="room1.name">Chambre Classique</h3>
+          <p data-i18n="room1.desc">Confort essentiel, lit queen-size, vue sur la ville.</p>
+          <div class="room-features">
+            <span><svg class="ico" aria-hidden="true"><use href="#i-wifi"></use></svg> <span data-i18n="feat.wifi">Wi-Fi</span></span>
+            <span><svg class="ico" aria-hidden="true"><use href="#i-snow"></use></svg> <span data-i18n="feat.ac">Climatisation</span></span>
+            <span><svg class="ico" aria-hidden="true"><use href="#i-tv"></use></svg> <span data-i18n="feat.tv">TV</span></span>
+          </div>
+          <div class="room-footer">
+            <span class="price" data-price="45000">45 000 FCFA <small data-i18n="rooms.night">/ nuit</small></span>
+            <button class="btn-small" data-book="room1" data-i18n="rooms.book">Réserver</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="room-card" data-category="room2" data-room="room2" data-aos="fade-up" data-aos-delay="100">
+        <div class="room-image">
+          <img src="assets/img/chambre-2.webp" width="800" height="600" alt="Suite Deluxe" loading="lazy">
+          <span class="badge badge-gold" data-i18n="room2.badge">Premium</span>
+          <button class="favorite" aria-label="Favori" data-fav="room2">
+            <svg class="ico" aria-hidden="true"><use href="#i-heart"></use></svg>
+          </button>
+        </div>
+        <div class="room-info">
+          <div class="room-rating" aria-label="4.9 / 5">
+            <svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg>
+            <span>4.9 (86 <span data-i18n="rooms.reviews">avis</span>)</span>
+          </div>
+          <h3 data-i18n="room2.name">Suite Deluxe</h3>
+          <p data-i18n="room2.desc">Espace premium avec salon séparé et vue panoramique.</p>
+          <div class="room-features">
+            <span><svg class="ico" aria-hidden="true"><use href="#i-wifi"></use></svg> <span data-i18n="feat.wifi">Wi-Fi</span></span>
+            <span><svg class="ico" aria-hidden="true"><use href="#i-bath"></use></svg> <span data-i18n="feat.bath">Baignoire</span></span>
+            <span><svg class="ico" aria-hidden="true"><use href="#i-view"></use></svg> <span data-i18n="feat.view">Vue</span></span>
+          </div>
+          <div class="room-footer">
+            <span class="price" data-price="85000">85 000 FCFA <small data-i18n="rooms.night">/ nuit</small></span>
+            <button class="btn-small" data-book="room2" data-i18n="rooms.book">Réserver</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="room-card" data-category="room3" data-room="room3" data-aos="fade-up" data-aos-delay="200">
+        <div class="room-image">
+          <img src="assets/img/chambre-3.webp" width="800" height="600" alt="Suite Présidentielle" loading="lazy">
+          <span class="badge badge-dark" data-i18n="room3.badge">Luxe</span>
+          <button class="favorite" aria-label="Favori" data-fav="room3">
+            <svg class="ico" aria-hidden="true"><use href="#i-heart"></use></svg>
+          </button>
+        </div>
+        <div class="room-info">
+          <div class="room-rating" aria-label="5 / 5">
+            <svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg>
+            <span>5.0 (42 <span data-i18n="rooms.reviews">avis</span>)</span>
+          </div>
+          <h3 data-i18n="room3.name">Suite Présidentielle</h3>
+          <p data-i18n="room3.desc">L'excellence absolue : jacuzzi et terrasse privée.</p>
+          <div class="room-features">
+            <span><svg class="ico" aria-hidden="true"><use href="#i-jacuzzi"></use></svg> <span data-i18n="feat.jacuzzi">Jacuzzi</span></span>
+            <span><svg class="ico" aria-hidden="true"><use href="#i-utensils"></use></svg> <span data-i18n="feat.roomservice">Room service</span></span>
+            <span><svg class="ico" aria-hidden="true"><use href="#i-bell"></use></svg> <span data-i18n="feat.concierge">Conciergerie</span></span>
+          </div>
+          <div class="room-footer">
+            <span class="price" data-price="180000">180 000 FCFA <small data-i18n="rooms.night">/ nuit</small></span>
+            <button class="btn-small" data-book="room3" data-i18n="rooms.book">Réserver</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERIE ============ -->
+<section class="gallery-section" id="galerie">
+  <div class="container">
+    <h2 data-aos="fade-up" data-i18n="gallery.title">Notre Galerie</h2>
+    <p class="subtitle" data-aos="fade-up" data-i18n="gallery.subtitle">Découvrez notre univers en images</p>
+
+    <div class="gallery" data-aos="fade-up">
+      <button class="gallery-item" data-index="0"><img src="assets/img/galerie-1.webp" width="1200" height="900" alt="Réception" data-i18n-attr="alt:gal.1" loading="lazy"><span class="gallery-zoom"><svg class="ico" aria-hidden="true"><use href="#i-zoom"></use></svg></span></button>
+      <button class="gallery-item" data-index="1"><img src="assets/img/galerie-2.webp" width="1200" height="900" alt="Chambre classique" data-i18n-attr="alt:gal.2" loading="lazy"><span class="gallery-zoom"><svg class="ico" aria-hidden="true"><use href="#i-zoom"></use></svg></span></button>
+      <button class="gallery-item" data-index="2"><img src="assets/img/galerie-3.webp" width="1200" height="900" alt="Suite deluxe" data-i18n-attr="alt:gal.3" loading="lazy"><span class="gallery-zoom"><svg class="ico" aria-hidden="true"><use href="#i-zoom"></use></svg></span></button>
+      <button class="gallery-item" data-index="3"><img src="assets/img/galerie-4.webp" width="1200" height="900" alt="Restaurant" data-i18n-attr="alt:gal.4" loading="lazy"><span class="gallery-zoom"><svg class="ico" aria-hidden="true"><use href="#i-zoom"></use></svg></span></button>
+      <button class="gallery-item" data-index="4"><img src="assets/img/galerie-5.webp" width="1200" height="900" alt="Spa" data-i18n-attr="alt:gal.5" loading="lazy"><span class="gallery-zoom"><svg class="ico" aria-hidden="true"><use href="#i-zoom"></use></svg></span></button>
+      <button class="gallery-item" data-index="5"><img src="assets/img/galerie-6.webp" width="1200" height="900" alt="Terrasse" data-i18n-attr="alt:gal.6" loading="lazy"><span class="gallery-zoom"><svg class="ico" aria-hidden="true"><use href="#i-zoom"></use></svg></span></button>
+      <button class="gallery-item" data-index="6"><img src="assets/img/galerie-7.webp" width="1200" height="900" alt="hall" data-i18n-attr="alt:gal.7" loading="lazy"><span class="gallery-zoom"><svg class="ico" aria-hidden="true"><use href="#i-zoom"></use></svg></span></button>
+      <button class="gallery-item" data-index="7"><img src="assets/img/galerie-8.webp" width="1200" height="900" alt="vue exterieure" data-i18n-attr="alt:gal.8" loading="lazy"><span class="gallery-zoom"><svg class="ico" aria-hidden="true"><use href="#i-zoom"></use></svg></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="container">
+    <h2 data-aos="fade-up" data-i18n="services.title">Nos Services</h2>
+    <p class="subtitle" data-aos="fade-up" data-i18n="services.subtitle">Tout pour un séjour sans fausse note</p>
+
+    <div class="services-grid">
+      <div class="service" data-aos="zoom-in">
+        <div class="service-icon"><svg class="ico" aria-hidden="true"><use href="#i-utensils"></use></svg></div>
+        <h4 data-i18n="svc1.t">Restaurant</h4><p data-i18n="svc1.d">Cuisine locale et internationale</p>
+      </div>
+      <div class="service" data-aos="zoom-in" data-aos-delay="80">
+        <div class="service-icon"><svg class="ico" aria-hidden="true"><use href="#i-spa"></use></svg></div>
+        <h4 data-i18n="svc2.t">Spa &amp; bien-être</h4><p data-i18n="svc2.d">Massages, hammam et sauna</p>
+      </div>
+      <div class="service" data-aos="zoom-in" data-aos-delay="160">
+        <div class="service-icon"><svg class="ico" aria-hidden="true"><use href="#i-pool"></use></svg></div>
+        <h4 data-i18n="svc3.t">Piscine</h4><p data-i18n="svc3.d">Espace détente ouvert 7j/7</p>
+      </div>
+      <div class="service" data-aos="zoom-in" data-aos-delay="240">
+        <div class="service-icon"><svg class="ico" aria-hidden="true"><use href="#i-car"></use></svg></div>
+        <h4 data-i18n="svc4.t">Navette aéroport</h4><p data-i18n="svc4.d">Transfert sur simple demande</p>
+      </div>
+      <div class="service" data-aos="zoom-in" data-aos-delay="320">
+        <div class="service-icon"><svg class="ico" aria-hidden="true"><use href="#i-dumbbell"></use></svg></div>
+        <h4 data-i18n="svc5.t">Salle de sport</h4><p data-i18n="svc5.d">Équipements récents</p>
+      </div>
+      <div class="service" data-aos="zoom-in" data-aos-delay="400">
+        <div class="service-icon"><svg class="ico" aria-hidden="true"><use href="#i-bell"></use></svg></div>
+        <h4 data-i18n="svc6.t">Réception 24/7</h4><p data-i18n="svc6.d">Une équipe à votre écoute</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AVIS ============ -->
+<section class="testimonials" id="avis">
+  <div class="container">
+    <h2 data-aos="fade-up" data-i18n="reviews.title">Ce que disent nos clients</h2>
+    <p class="subtitle" data-aos="fade-up" data-i18n="reviews.subtitle">Note moyenne 4.8 / 5</p>
+
+    <div class="testimonials-slider" data-aos="fade-up">
+      <div class="testimonial-viewport">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial">
+            <div class="stars"><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg></div>
+            <p data-i18n="rev1.text">Un séjour vraiment reposant. Le personnel est aux petits soins et la suite était superbe. Je recommande.</p>
+            <div class="author">
+              <img src="assets/img/avatar-1.webp" width="160" height="160" alt="" loading="lazy">
+              <div><strong>Marie K.</strong><span data-i18n="rev1.loc">Abidjan</span></div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="stars"><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg></div>
+            <p data-i18n="rev2.text">Le spa est excellent et le restaurant vaut à lui seul le détour. Une adresse que je garde.</p>
+            <div class="author">
+              <img src="assets/img/avatar-2.webp" width="160" height="160" alt="" loading="lazy">
+              <div><strong>Jean-Pierre M.</strong><span data-i18n="rev2.loc">Dakar</span></div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="stars"><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star-half"></use></svg></div>
+            <p data-i18n="rev3.text">Chambre impeccable, très belle vue. Petit bémol sur le petit-déjeuner, mais la qualité est là.</p>
+            <div class="author">
+              <img src="assets/img/avatar-3.webp" width="160" height="160" alt="" loading="lazy">
+              <div><strong>Sophie D.</strong><span data-i18n="rev3.loc">Paris</span></div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="stars"><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg></div>
+            <p data-i18n="rev4.text">Réception exceptionnelle, ils ont organisé toute notre semaine. Bravo à l'équipe.</p>
+            <div class="author">
+              <img src="assets/img/avatar-4.webp" width="160" height="160" alt="" loading="lazy">
+              <div><strong>David R.</strong><span data-i18n="rev4.loc">Accra</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-controls">
+        <button id="testiPrev" data-i18n-attr="aria-label:lb.prev" aria-label="Précédent"><svg class="ico" aria-hidden="true"><use href="#i-chevron-left"></use></svg></button>
+        <div class="testimonial-dots" id="testimonialDots"></div>
+        <button id="testiNext" data-i18n-attr="aria-label:lb.next" aria-label="Suivant"><svg class="ico" aria-hidden="true"><use href="#i-chevron-right"></use></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="newsletter">
+  <div class="container">
+    <div class="newsletter-box" data-aos="fade-up">
+      <div class="newsletter-icon"><svg class="ico" aria-hidden="true"><use href="#i-mail-open"></use></svg></div>
+      <h3 data-i18n="news.title">Recevez nos offres</h3>
+      <p data-i18n="news.text">-15 % sur votre première réservation en vous inscrivant</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <label class="sr-only" for="newsEmail" data-i18n="news.ph">Votre adresse email</label>
+        <input type="email" id="newsEmail" placeholder="Votre adresse email" data-i18n-attr="placeholder:news.ph" required>
+        <button type="submit" class="btn-primary" data-i18n="news.submit">S'inscrire</button>
+      </form>
+      <p class="newsletter-note"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-shield"></use></svg> <span data-i18n="news.note">Vos données restent confidentielles. Désinscription en un clic.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <h2 data-aos="fade-up" data-i18n="contact.title">Nous trouver</h2>
+    <p class="subtitle" data-aos="fade-up" data-i18n="contact.subtitle">Une question ? Une demande particulière ?</p>
+
+    <div class="contact-grid">
+      <div class="contact-info" data-aos="fade-right">
+        <div class="info-item">
+          <div class="info-icon"><svg class="ico" aria-hidden="true"><use href="#i-pin"></use></svg></div>
+          <div>
+            <h4 data-i18n="contact.address">Adresse</h4>
+            <p data-address></p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg></div>
+          <div>
+            <h4 data-i18n="contact.phone">Téléphone</h4>
+            <p><a class="phone-link" data-tel></a><br><a class="phone-link" data-tel2></a></p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg></div>
+          <div>
+            <h4 data-i18n="contact.email">Email</h4>
+            <p><a class="email-link" data-mail></a><br><a class="email-link" data-mail-booking></a></p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><svg class="ico" aria-hidden="true"><use href="#i-clock"></use></svg></div>
+          <div>
+            <h4 data-i18n="contact.hours">Réception</h4>
+            <p data-i18n="contact.hours_v">Ouverte 24h/24 · 7j/7</p>
+          </div>
+        </div>
+
+        <div class="social-links" id="socialLinks"></div>
+
+        <form class="contact-form" id="contactForm">
+          <h4 data-i18n="contact.write">Écrivez-nous</h4>
+          <label class="sr-only" for="cName" data-i18n="contact.f_name">Votre nom</label>
+          <input type="text" id="cName" placeholder="Votre nom" data-i18n-attr="placeholder:contact.f_name" required>
+          <label class="sr-only" for="cMsg" data-i18n="contact.f_msg">Votre message</label>
+          <textarea id="cMsg" rows="3" placeholder="Votre message" data-i18n-attr="placeholder:contact.f_msg" required></textarea>
+          <button type="submit" class="btn-primary btn-wa">
+            <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+            <span data-i18n="contact.f_send">Envoyer sur WhatsApp</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="contact-map" data-aos="fade-left" id="contactMap">
+        <!-- Repli affiché si la carte ne peut pas se charger (hors-ligne) -->
+        <div class="map-fallback">
+          <svg class="ico" aria-hidden="true"><use href="#i-pin"></use></svg>
+          <strong data-brand-name>Le Prestige</strong>
+          <span data-address></span>
+          <a class="btn-ghost" data-maps target="_blank" rel="noopener" data-i18n="contact.map_btn">Ouvrir dans Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="footer-logo">
+          <svg class="ico" aria-hidden="true"><use href="#i-hotel"></use></svg>
+          <span data-brand-name>Le Prestige</span>
+        </div>
+        <p><span data-i18n="footer.about">Une adresse d'exception au cœur de la ville, depuis</span> <span data-founded>1985</span>.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer.nav">Navigation</h4>
+        <ul>
+          <li><a href="#accueil" data-i18n="nav.home">Accueil</a></li>
+          <li><a href="#chambres" data-i18n="nav.rooms">Chambres</a></li>
+          <li><a href="#galerie" data-i18n="nav.gallery">Galerie</a></li>
+          <li><a href="#services" data-i18n="nav.services">Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer.contact">Contact</h4>
+        <ul class="footer-contact">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-pin"></use></svg> <span data-address></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg> <a class="phone-link" data-tel></a></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"></use></svg> <a data-wa-link target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg> <a class="email-link" data-mail></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer.news">Newsletter</h4>
+        <p data-i18n="footer.newstext">Restez informé de nos offres.</p>
+        <form class="footer-newsletter" id="footerNewsletter">
+          <label class="sr-only" for="footEmail">Email</label>
+          <input type="email" id="footEmail" placeholder="Votre email" data-i18n-attr="placeholder:news.ph" required>
+          <button type="submit" aria-label="OK"><svg class="ico" aria-hidden="true"><use href="#i-send"></use></svg></button>
+        </form>
+        <div class="payment-icons" aria-hidden="true">
+          <svg class="ico"><use href="#i-card"></use></svg>
+          <svg class="ico"><use href="#i-mobile"></use></svg>
+          <svg class="ico"><use href="#i-shield"></use></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span data-year>2026</span> <span data-brand-legal>Le Prestige</span>. <span data-i18n="footer.rights">Tous droits réservés.</span>
+        <span class="credit" id="credit" hidden></span>
+      </p>
+      <div class="footer-links">
+        <a href="mentions-legales.html" data-i18n="footer.legal1">Mentions légales</a>
+        <a href="confidentialite.html" data-i18n="footer.legal2">Confidentialité</a>
+        <a href="cgv.html" data-i18n="footer.legal3">CGV</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ ÉLÉMENTS FLOTTANTS ============ -->
+<button class="back-to-top" id="backToTop" aria-label="Retour en haut" data-i18n-attr="aria-label:a11y.top">
+  <svg class="ico" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+</button>
+
+<a class="floating-wa" id="floatingWa" target="_blank" rel="noopener" aria-label="WhatsApp" data-i18n-attr="aria-label:a11y.wa">
+  <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+</a>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galerie">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Fermer" data-i18n-attr="aria-label:lb.close"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button>
+  <button class="lightbox-prev" id="lightbox-prev" aria-label="Précédent" data-i18n-attr="aria-label:lb.prev"><svg class="ico" aria-hidden="true"><use href="#i-chevron-left"></use></svg></button>
+  <img src="" alt="" id="lightbox-img">
+  <button class="lightbox-next" id="lightbox-next" aria-label="Suivant" data-i18n-attr="aria-label:lb.next"><svg class="ico" aria-hidden="true"><use href="#i-chevron-right"></use></svg></button>
+  <p class="lightbox-caption" id="lightbox-caption"></p>
+  <span class="lightbox-counter" id="lightbox-counter"></span>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+# ============================================================================
+#  EN-TÊTES DE SÉCURITÉ
+#  Pour Netlify et Cloudflare Pages : dépose ce fichier à la racine du site,
+#  il est pris en compte automatiquement (pas d'extension, le nom exact
+#  est bien "_headers").
+#  Pour un hébergement Apache / cPanel, utilise le fichier .htaccess à la place.
+#  Vérifie le résultat sur securityheaders.com après la mise en ligne.
+# ============================================================================
+
+/*
+  # Force le HTTPS pendant 1 an, même si quelqu'un tape l'adresse en http://
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+  # Empêche d'afficher le site dans une iframe (usurpation, faux formulaires)
+  X-Frame-Options: DENY
+
+  # Interdit au navigateur de "deviner" le type d'un fichier
+  X-Content-Type-Options: nosniff
+
+  # Ne transmet pas l'adresse complète de la page aux sites externes
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Le site ne demande ni caméra, ni micro, ni position : on le déclare
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+  # Liste blanche : le navigateur ne charge QUE ce qui est autorisé ici.
+  # C'est la protection la plus forte contre l'injection de code.
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.openstreetmap.org; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+
+# Les images ne changent jamais de nom : on autorise un cache long (site plus rapide)
+/assets/img/*
+  Cache-Control: public, max-age=31536000, immutable

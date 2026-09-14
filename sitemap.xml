@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Remplace le domaine par celui du client, puis dépose ce fichier
+     dans la Search Console de Google. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://le-prestige.example/</loc><priority>1.0</priority></url>
+  <url><loc>https://le-prestige.example/mentions-legales.html</loc><priority>0.3</priority></url>
+  <url><loc>https://le-prestige.example/confidentialite.html</loc><priority>0.3</priority></url>
+  <url><loc>https://le-prestige.example/cgv.html</loc><priority>0.3</priority></url>
+</urlset>

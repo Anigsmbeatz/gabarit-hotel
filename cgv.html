@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Conditions générales — <span></span></title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="config.js"></script>
+<script>
+  (function () {
+    var c = (window.SITE && window.SITE.theme) || {};
+    var m = {primary:'--primary',primaryDark:'--primary-dark',primaryLight:'--primary-light',dark:'--dark',dark2:'--dark-2',grayLight:'--gray-light'};
+    for (var k in m) if (c[k]) document.documentElement.style.setProperty(m[k], c[k]);
+  })();
+</script>
+</head>
+<body class="legal-page">
+
+<header class="legal-header">
+  <a class="legal-back" href="index.html">&larr; <span data-brand-name></span></a>
+</header>
+
+<main class="legal">
+  <h1>Conditions générales</h1>
+  <p class="legal-updated">Dernière mise à jour : <span data-updated></span></p>
+
+  <h2>Objet</h2>
+  <p>Les présentes conditions régissent les réservations effectuées auprès de
+     <span data-brand-legal></span>, <span data-address></span>.</p>
+
+  <h2>Réservation</h2>
+  <p>Une demande envoyée depuis ce site ne constitue pas une réservation ferme. Elle devient
+     définitive après confirmation écrite de l'établissement et, le cas échéant, versement de
+     l'acompte demandé.</p>
+
+  <h2>Tarifs</h2>
+  <p>Les tarifs sont indiqués par nuit et par chambre, taxes comprises, hors [taxe de séjour /
+     prestations supplémentaires]. Ils peuvent varier selon la saison et la disponibilité.</p>
+
+  <h2>Paiement</h2>
+  <p>Moyens acceptés : [espèces / carte bancaire / mobile money / virement]. Un acompte de
+     [X %] peut être demandé à la confirmation.</p>
+
+  <h2>Annulation et modification</h2>
+  <p>Annulation gratuite jusqu'à [48 heures] avant l'arrivée. Passé ce délai, [la première nuit
+     est due]. En cas de non-présentation, [la totalité du séjour est due].</p>
+
+  <h2>Arrivée et départ</h2>
+  <p>Arrivée à partir de [14 h]. Départ avant [12 h]. Une pièce d'identité est demandée à
+     l'enregistrement.</p>
+
+  <h2>Règlement intérieur</h2>
+  <p>[Animaux, fumeurs, nuisances sonores, accès piscine : à préciser.]</p>
+
+  <h2>Réclamations</h2>
+  <p>Toute réclamation doit être adressée à <a class="email-link" data-mail></a> ou par téléphone
+     au <a class="phone-link" data-tel></a>.</p>
+
+  <p class="legal-todo">
+    <strong>À compléter avant la mise en ligne.</strong> Les passages entre crochets doivent
+    être remplis avec les informations réelles du client (RCCM, siège social, hébergeur…).
+  </p>
+</main>
+
+<footer class="legal-footer">
+  <p>© <span data-year></span> <span data-brand-legal></span></p>
+  <p>
+    <a href="mentions-legales.html">Mentions légales</a> ·
+    <a href="confidentialite.html">Confidentialité</a> ·
+    <a href="cgv.html">CGV</a>
+  </p>
+</footer>
+
+<script>
+(function () {
+  var C = window.SITE || {}, b = C.brand || {}, ct = C.contact || {}, a = ct.address || {};
+  var addr = [a.street, a.zone, a.city, a.country].filter(Boolean).join(', ');
+  function set(sel, fn) {
+    Array.prototype.forEach.call(document.querySelectorAll(sel), fn);
+  }
+  set('[data-brand-name]',  function (e) { e.textContent = b.name || ''; });
+  set('[data-brand-legal]', function (e) { e.textContent = b.legalName || b.name || ''; });
+  set('[data-address]',     function (e) { e.textContent = addr; });
+  set('[data-year]',        function (e) { e.textContent = new Date().getFullYear(); });
+  set('[data-updated]',     function (e) { e.textContent = new Date().toLocaleDateString('fr-FR'); });
+  set('[data-mail]',        function (e) { e.href = 'mailto:' + (ct.email || ''); e.textContent = ct.email || ''; });
+  set('[data-tel]',         function (e) { e.href = 'tel:' + (ct.phone || ''); e.textContent = ct.phoneDisplay || ''; });
+  document.title = document.title.replace('<span></span>', b.name || '');
+})();
+</script>
+</body>
+</html>

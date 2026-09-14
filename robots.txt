@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Remplace l'adresse ci-dessous par le domaine réel du client
+Sitemap: https://le-prestige.example/sitemap.xml

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Mentions légales — <span></span></title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="config.js"></script>
+<script>
+  (function () {
+    var c = (window.SITE && window.SITE.theme) || {};
+    var m = {primary:'--primary',primaryDark:'--primary-dark',primaryLight:'--primary-light',dark:'--dark',dark2:'--dark-2',grayLight:'--gray-light'};
+    for (var k in m) if (c[k]) document.documentElement.style.setProperty(m[k], c[k]);
+  })();
+</script>
+</head>
+<body class="legal-page">
+
+<header class="legal-header">
+  <a class="legal-back" href="index.html">&larr; <span data-brand-name></span></a>
+</header>
+
+<main class="legal">
+  <h1>Mentions légales</h1>
+  <p class="legal-updated">Dernière mise à jour : <span data-updated></span></p>
+
+  <h2>Éditeur du site</h2>
+  <p>
+    <strong><span data-brand-legal></span></strong><br>
+    <span data-address></span><br>
+    Téléphone : <a class="phone-link" data-tel></a><br>
+    Email : <a class="email-link" data-mail></a>
+  </p>
+  <p>Forme juridique : [SARL / SA / Entreprise individuelle]<br>
+     Numéro RCCM : [à compléter]<br>
+     Numéro de compte contribuable : [à compléter]<br>
+     Directeur de la publication : [Nom du responsable]</p>
+
+  <h2>Hébergement</h2>
+  <p>Le site est hébergé par [nom de l'hébergeur], [adresse de l'hébergeur].</p>
+
+  <h2>Propriété intellectuelle</h2>
+  <p>L'ensemble des contenus présents sur ce site (textes, photographies, logos, éléments
+     graphiques) est la propriété de <span data-brand-legal></span>, sauf mention contraire.
+     Toute reproduction, même partielle, est interdite sans autorisation écrite préalable.</p>
+
+  <h2>Photographies</h2>
+  <p>Les photographies présentées sont [propriété de l'établissement / issues de la banque
+     d'images <em>nom</em>] et peuvent ne pas représenter fidèlement les prestations proposées.</p>
+
+  <h2>Responsabilité</h2>
+  <p>Les informations diffusées sont données à titre indicatif et peuvent être modifiées à
+     tout moment. <span data-brand-legal></span> ne saurait être tenu responsable des erreurs
+     ou omissions, ni de l'usage qui pourrait en être fait.</p>
+
+  <h2>Contact</h2>
+  <p>Pour toute question relative au site : <a class="email-link" data-mail></a>.</p>
+
+  <p class="legal-todo">
+    <strong>À compléter avant la mise en ligne.</strong> Les passages entre crochets doivent
+    être remplis avec les informations réelles du client (RCCM, siège social, hébergeur…).
+  </p>
+</main>
+
+<footer class="legal-footer">
+  <p>© <span data-year></span> <span data-brand-legal></span></p>
+  <p>
+    <a href="mentions-legales.html">Mentions légales</a> ·
+    <a href="confidentialite.html">Confidentialité</a> ·
+    <a href="cgv.html">CGV</a>
+  </p>
+</footer>
+
+<script>
+(function () {
+  var C = window.SITE || {}, b = C.brand || {}, ct = C.contact || {}, a = ct.address || {};
+  var addr = [a.street, a.zone, a.city, a.country].filter(Boolean).join(', ');
+  function set(sel, fn) {
+    Array.prototype.forEach.call(document.querySelectorAll(sel), fn);
+  }
+  set('[data-brand-name]',  function (e) { e.textContent = b.name || ''; });
+  set('[data-brand-legal]', function (e) { e.textContent = b.legalName || b.name || ''; });
+  set('[data-address]',     function (e) { e.textContent = addr; });
+  set('[data-year]',        function (e) { e.textContent = new Date().getFullYear(); });
+  set('[data-updated]',     function (e) { e.textContent = new Date().toLocaleDateString('fr-FR'); });
+  set('[data-mail]',        function (e) { e.href = 'mailto:' + (ct.email || ''); e.textContent = ct.email || ''; });
+  set('[data-tel]',         function (e) { e.href = 'tel:' + (ct.phone || ''); e.textContent = ct.phoneDisplay || ''; });
+  document.title = document.title.replace('<span></span>', b.name || '');
+})();
+</script>
+</body>
+</html>
