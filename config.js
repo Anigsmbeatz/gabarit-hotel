@@ -39,14 +39,14 @@ window.SITE = {
      3. CONTACT  (le cœur de la conversion)
      --------------------------------------------------------------------- */
   contact: {
-    phoneDisplay: "+225 07 00 00 00 00",   // Tel affiché
-    phone:        "+2250700000000",        // Tel cliquable (sans espaces)
-    phone2Display:"+225 27 00 00 00 00",
-    phone2:       "+2250700000000",
+    phoneDisplay: "+225 07 12 44 64 93",   // Tel affiché
+    phone:        "+2250712446493",        // Tel cliquable (sans espaces)
+    phone2Display:"+225 01 72 08 56 78",
+    phone2:       "+2250172085678",
 
     // WhatsApp : indicatif pays + numéro, SANS +, sans espace, sans 00
     // Côte d'Ivoire = 225, France = 33, Sénégal = 221...
-    whatsapp:     "2250700000000",
+    whatsapp:     "2250712446493",
 
     email:        "contact@le-prestige.example",
     emailBooking: "reservation@le-prestige.example",
@@ -87,13 +87,14 @@ window.SITE = {
   },
 
   /* ---------------------------------------------------------------------
-     6. RÉSERVATION
-     mode : "whatsapp" | "email" | "both"
-     Le formulaire ne fait PAS de vraie disponibilité : il compose un
+     6. RÉSERVATION  (par WhatsApp uniquement)
+     Le formulaire ne vérifie PAS de vraie disponibilité : il compose un
      message prêt à envoyer. C'est ce qui rend la démo crédible.
+     L'envoi par email a été retiré : un lien « mailto » ne fonctionne que
+     si le visiteur a un logiciel de messagerie configuré, ce qui n'est
+     pas le cas de la majorité des appareils.
      --------------------------------------------------------------------- */
   booking: {
-    mode: "both",
     autoOpenWhatsApp: false   // true = ouvre WhatsApp directement au clic
   },
 
@@ -148,7 +149,6 @@ window.SITE = {
       "book.night":       "nuit",
       "book.nights":      "nuits",
       "book.send_wa":     "Envoyer sur WhatsApp",
-      "book.send_mail":   "Envoyer par email",
       "book.note":        "Aucun paiement en ligne : votre demande part directement à la réception.",
       "book.msg_intro":   "Bonjour, je souhaite réserver",
 
@@ -280,7 +280,6 @@ window.SITE = {
       "book.night":       "night",
       "book.nights":      "nights",
       "book.send_wa":     "Send on WhatsApp",
-      "book.send_mail":   "Send by email",
       "book.note":        "No online payment: your request goes straight to the front desk.",
       "book.msg_intro":   "Hello, I would like to book",
 

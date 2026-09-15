@@ -119,7 +119,10 @@
       if (!ct.phone2) { var li = el.closest('br') ? el : el; el.remove(); return; }
       el.href = 'tel:' + ct.phone2; el.textContent = ct.phone2Display || ct.phone2;
     });
-    $$('[data-mail]').forEach(function (el) { el.href = 'mailto:' + (ct.email || ''); el.textContent = ct.email || ''; });
+    $$('[data-mail]').forEach(function (el) {
+      if (!ct.email) { el.remove(); return; }
+      el.href = 'mailto:' + ct.email; el.textContent = ct.email;
+    });
     $$('[data-mail-booking]').forEach(function (el) {
       if (!ct.emailBooking) { el.remove(); return; }
       el.href = 'mailto:' + ct.emailBooking; el.textContent = ct.emailBooking;
@@ -374,7 +377,7 @@
     var checkin = $('#checkin'), checkout = $('#checkout'),
         guests = $('#guests'), roomtype = $('#roomtype'),
         err = $('#bookingError'), result = $('#bookingResult'),
-        recap = $('#bookingRecap'), waBtn = $('#bookWa'), mailBtn = $('#bookMail');
+        recap = $('#bookingRecap'), waBtn = $('#bookWa');
 
     var today = new Date().toISOString().split('T')[0];
     if (checkin) checkin.min = today;
@@ -427,15 +430,7 @@
         '• ' + t('book.out') + ' : ' + fmtDate(checkout.value) + ' (' + nights + ' ' + nightWord + ')\n' +
         '• ' + t('book.guests') + ' : ' + people;
 
-      var mode = (C.booking && C.booking.mode) || 'both';
-      if (waBtn) {
-        waBtn.href = waLink(msg);
-        waBtn.hidden = (mode === 'email') || !ct.whatsapp;
-      }
-      if (mailBtn) {
-        mailBtn.href = mailLink(ct.emailBooking || ct.email || '', t('book.recap') + ' — ' + (C.brand ? C.brand.name : ''), msg);
-        mailBtn.hidden = (mode === 'whatsapp');
-      }
+      if (waBtn) waBtn.href = waLink(msg);
 
       if (result) {
         result.hidden = false;

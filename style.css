@@ -50,6 +50,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
 
+/* Un élément masqué par l'attribut `hidden` doit le rester, même si sa
+   classe lui donne un `display` (les boutons sont en inline-flex). */
+[hidden] { display: none !important; }
+
 /* Accessibilité ------------------------------------------------------------ */
 .sr-only {
   position: absolute; width: 1px; height: 1px;
@@ -563,8 +567,10 @@ footer { background: var(--dark); color: #c9c9c9; padding: 3.5rem 0 0; }
 .toast.show { transform: translate(-50%, 0); opacity: 1; }
 .toast .ico { color: var(--primary-light); }
 
-/* Overlay du menu mobile */
-.menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 1040; }
+/* Overlay du menu mobile.
+   z-index 999 : il doit rester SOUS la barre de navigation (z-index 1000),
+   sinon il recouvre le panneau du menu et avale les clics sur les liens. */
+.menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 999; }
 .menu-overlay.active { display: block; }
 
 /* =========================================================
